@@ -22,6 +22,19 @@ app.use("/mw2", (req, res, next) => {
   console.log("middle ware 2");
 });
 
+app.get("/", (req, res) => {
+  console.log("headers", req.headers);
+  res.status(404).json("error from server");
+});
+
+app.get("/:id/name", (req, res) => {
+  console.log("params", req.params);
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+});
+
 /* app.use('/', indexRouter);
 app.use('/users', usersRouter); */
 
