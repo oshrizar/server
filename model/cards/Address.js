@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {
-  DEFAULT_STRING_SCHEMA_REQUIRED,
   DEFAULT_STRING_SCHEMA,
+  DEFAULT_STRING_SCHEMA_REQUIRED,
 } = require("./helpers/mongooseValidation");
 
 const Address = new mongoose.Schema({
@@ -22,4 +22,5 @@ const Address = new mongoose.Schema({
     default: 0,
   },
 });
+
 module.exports = Address;

@@ -1,23 +1,23 @@
 const mongoose = require("mongoose");
-const Image = require("./image");
+const Image = require("./Image");
 const Address = require("./Address");
 const {
-  DEFAULT_STRING_SCHEMA_REQUIRED,
   URL,
+  DEFAULT_STRING_SCHEMA_REQUIRED,
 } = require("./helpers/mongooseValidation");
-const { string } = require("joi");
+
 const cardSchema = new mongoose.Schema({
   title: DEFAULT_STRING_SCHEMA_REQUIRED,
   subTitle: DEFAULT_STRING_SCHEMA_REQUIRED,
   description: { ...DEFAULT_STRING_SCHEMA_REQUIRED, maxLength: 1024 },
   phone: {
-    type: string,
+    type: String,
     required: true,
     match: RegExp(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/),
   },
   email: {
-    type: string,
-    required: true,
+    type: String,
+    require: true,
     match: RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/),
     lowercase: true,
     trim: true,
@@ -30,9 +30,10 @@ const cardSchema = new mongoose.Schema({
     type: Number,
     minLength: 7,
     maxLength: 7,
+    required: true,
     trim: true,
   },
-  likes: [string],
+  likes: [String],
   createdAt: {
     type: Date,
     default: Date.now,
